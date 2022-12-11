@@ -60,7 +60,14 @@ class _SplashScreenState extends State<SplashScreen> {
                           Container(
                             height: Dimension.height70,
                             child: Center(
-                              child: Text("Bick $screenIndex"),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage('assets/bick.png'),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                           SmallText(
@@ -111,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 TextButton(
                   onPressed: () {
                     setState(() {
-                      if (screenIndex <= 1 ) {
+                      if (screenIndex <= 1) {
                         screenIndex++;
                       }
                     });
