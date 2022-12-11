@@ -6,7 +6,6 @@ import 'package:bick/models/splash_screen_data.dart';
 import 'package:bick/utility/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:patterns_canvas/patterns_canvas.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -51,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   PageView.builder(
                     onPageChanged: (value) => setState(() {
                       screenIndex = value;
-                    }) ,
+                    }),
                     itemCount: SplashScreenData.splashScreenList.length,
                     itemBuilder: ((context, index) {
                       return Column(
@@ -104,11 +103,19 @@ class _SplashScreenState extends State<SplashScreen> {
                               height: 8,
                               width: 8,
                               decoration: BoxDecoration(
-                                  color: index == screenIndex ? AppColor.textColor: Color.fromARGB(255, 198, 184, 199),
+                                  color: index == screenIndex
+                                      ? AppColor.textColor
+                                      : Color.fromARGB(255, 198, 184, 199),
                                   shape: BoxShape.circle),
                             ))),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      if (screenIndex <= 1 ) {
+                        screenIndex++;
+                      }
+                    });
+                  },
                   child: SmallText(
                     title: "Next",
                     fontWeight: FontWeight.bold,
